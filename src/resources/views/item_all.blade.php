@@ -10,10 +10,10 @@
         <input type="radio" name="tab_name" id="tab1" checked>
         <label class="tab_class" for="tab1">おすすめ</label>
         <div class="content_class">
-            @foreach ($recommend_items as $item)
+            @foreach ($recommend_items as $recommend_item)
             <div class="item__img">
-                <a href="/item/{{ $item->id }}">
-                    <img src="{{ asset( $item->image ) }}">
+                <a href="/item/{{ $recommend_item->id }}">
+                    <img src="{{ asset( $recommend_item->image ) }}">
                 </a>
             </div>
             @endforeach
@@ -22,10 +22,10 @@
         <input type="radio" name="tab_name" id="tab2">
         <label class="tab_class" for="tab2">マイリスト</label>
         <div class="content_class">
-            @foreach ($like_items as $item)
+            @foreach ($like_items as $like_item)
             <div class="item__img">
-                <a href="/item/{{ $item->id }}">
-                    <img src="{{ asset( $item->image ) }}">
+                <a href="/item/{{ $like_item->id }}">
+                    <img src="{{ asset( $like_item->image ) }}">
                 </a>
             </div>
             @endforeach

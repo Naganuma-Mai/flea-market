@@ -40,10 +40,10 @@
             <input type="radio" name="tab_name" id="tab2">
             <label class="tab_class" for="tab2">購入した商品</label>
             <div class="content_class">
-                @foreach (Auth::user()->purchases as $purchase_item)
+                @foreach (Auth::user()->purchases as $purchase)
                 <div class="item__img">
-                    <a href="/item/{{ $purchase_item->id }}">
-                        <img src="{{ asset( $purchase_item->image ) }}">
+                    <a href="/item/{{ $purchase->item->id }}">
+                        <img src="{{ asset( $purchase->item->image ) }}">
                     </a>
                 </div>
                 @endforeach
