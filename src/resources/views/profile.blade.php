@@ -2,6 +2,7 @@
 
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 @endsection
 
 @section('content')
@@ -14,11 +15,16 @@
         <input type="hidden" name="profile_id" value="{{ $profile->id ?? '' }}">
         <div class="form__group">
             <div class="form__group-content">
-                <div class="form__img--prv">
-                    <img id="preview">
+                <!-- アイコン画像プレビュー表示 -->
+                <div class="form__img">
+                    <img id="preview" class="form__img--prv" src="{{ isset($profile) && $profile->image ? asset($profile->image) : '' }}">
                 </div>
-                <div class="form__input--file">
-                    <input type="file" name="image">
+                <!-- アイコン画像 -->
+                <div class="form__input">
+                    <label class="form__input--label">
+                        画像を選択する
+                        <input id="icon" class="form__input--file" type="file" name="image" accept="image/*">
+                    </label>
                 </div>
                 <!-- <div class="form__error">
                     @error('email')
@@ -92,4 +98,20 @@
         </div>
     </form>
 </div>
+
+<script>
+    // アイコン画像プレビュー処理
+    // 画像が選択される度に、この中の処理が走る
+    $('#icon').on('change', function (ev) {
+        // このFileReaderが画像を読み込む上で大切
+        const reader = new FileReader();
+        // ファイル名を取得
+        const fileName = ev.target.files[0].name;
+        // 画像が読み込まれた時の動作を記述
+        reader.onload = function (ev) {
+            $('#preview').attr('src', ev.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+    })
+</script>
 @endsection

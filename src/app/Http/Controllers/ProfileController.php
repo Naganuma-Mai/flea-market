@@ -36,13 +36,13 @@ class ProfileController extends Controller
         ];
 
         // profile_idキーが存在し、かつ値が入力されている場合
-        if ($request->has('profile_id')) {
+        if ($request->filled('profile_id')) {
             Profile::find($request->profile_id)->update($profile);
         // profile_idキーが存在しない、もしくはNULLの場合
         } else {
             Profile::create($profile);
         }
 
-        return view('my_page');
+        return redirect('/mypage');
     }
 }
