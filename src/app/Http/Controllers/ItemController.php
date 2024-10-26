@@ -10,10 +10,17 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $recommend_items = Item::all();
 
-        // ユーザーがお気に入りにした商品の一覧を取得
-        $like_items = $user->likeItems()->get();
+        // ログイン後
+        if (Auth::check()) {
+            $user = Auth::user();
+            // ユーザーがお気に入りにした商品の一覧を取得
+            $like_items = $user->likeItems()->get();
+        // ログイン前
+        } else {
+            $like_items = [];
+        }
 
         return view('item_all', compact('recommend_items', 'like_items'));
     }

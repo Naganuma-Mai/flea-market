@@ -19,6 +19,8 @@
             @endforeach
         </div>
 
+        <!-- ログイン後 -->
+        @if (Auth::check())
         <input type="radio" name="tab_name" id="tab2">
         <label class="tab_class" for="tab2">マイリスト</label>
         <div class="content_class">
@@ -30,6 +32,7 @@
             </div>
             @endforeach
         </div>
+        @endif
     </div>
 </div>
 @endsection
