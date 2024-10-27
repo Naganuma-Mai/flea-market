@@ -10,10 +10,12 @@
         <div class="my-page__header">
             <div class="my-page__user">
                 <div class="my-page__user-image">
-                    <img src="{{ asset( Auth::user()->profile->image ) }}">
+                    <!-- プロフィールの画像が設定されている場合のみ画像を表示 -->
+                    <img src="{{ isset(Auth::user()->profile->image) ? asset(Auth::user()->profile->image) : '' }}">
                 </div>
                 <span class="my-page__user-name">
-                    {{ Auth::user()->profile->name }}
+                    <!-- プロフィールの名前が設定されている場合のみ名前を表示 -->
+                    {{ isset(Auth::user()->profile->name) ? Auth::user()->profile->name : 'ユーザー名' }}
                 </span>
             </div>
             <div class="my-page__form">
