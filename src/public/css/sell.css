@@ -1,0 +1,12 @@
+.form__img {
+    width: 150px;
+    height: 150px;
+}
+
+.form__img--prv {
+    width: 100%;
+}
+
+.form__input--file {
+    display: none;
+}

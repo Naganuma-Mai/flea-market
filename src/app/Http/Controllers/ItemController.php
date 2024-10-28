@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -43,11 +44,9 @@ class ItemController extends Controller
 
     public function add()
     {
-        // $areas = Area::all();
-        // $genres = Genre::all();
+        $categories = Category::all();
 
-        // return view('sell', compact('areas', 'genres'));
-        return view('sell');
+        return view('sell', compact('categories'));
     }
 
     public function store(Request $request)
@@ -58,15 +57,18 @@ class ItemController extends Controller
         // 取得したファイル名で保存
         $request->file('image')->storeAs('public/images' , $file_name);
 
-        $item = [
+        // Itemモデルのインスタンスを作成して保存
+        $item = Item::create([
             'user_id' => Auth::id(),
             'image' => 'storage/images/' . $file_name,
             'condition' => $request->condition,
             'name' => $request->name,
             'explanation' => $request->explanation,
             'price' => $request->price
-        ];
-        Item::create($item);
+        ]);
+
+        // 中間テーブルへの登録
+        $item->categories()->attach($request->categories);
 
         return view('my_page');
     }

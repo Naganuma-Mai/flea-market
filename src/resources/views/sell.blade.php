@@ -2,6 +2,10 @@
 
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/sell.css') }}">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
 @endsection
 
 @section('content')
@@ -17,11 +21,16 @@
                     <span class="form__label--item">商品画像</span>
                 </div>
                 <div class="form__group-content">
-                    <div class="form__img--prv">
-                        <img id="preview">
+                    <!-- 商品画像プレビュー表示 -->
+                    <div class="form__img">
+                        <img id="preview" class="form__img--prv">
                     </div>
-                    <div class="form__input--file">
-                        <input type="file" name="image">
+                    <!-- 商品画像 -->
+                    <div class="form__input">
+                        <label class="form__input--label">
+                            画像を選択する
+                            <input id="image" class="form__input--file" type="file" name="image" accept="image/*">
+                        </label>
                     </div>
                     <!-- <div class="form__error">
                         @error('email')
@@ -39,8 +48,14 @@
                     <span class="form__label--item">カテゴリー</span>
                 </div>
                 <div class="form__group-content">
-                    <div class="form__input--text">
-                        <input type="text" name="name" value="{{ old('name') }}">
+                    <div class="form__select">
+                        <select name="categories[]" multiple="multiple">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <!-- <div class="form__error">
                         @error('email')
@@ -110,7 +125,7 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <input type="text" name="price" value="¥{{ old('price') }}">
+                        <input id="price" type="text" name="price" value="{{ old('price') }}">
                     </div>
                     <!-- <div class="form__error">
                         @error('email')
@@ -126,4 +141,58 @@
         </div>
     </form>
 </div>
+
+<script>
+    // アイコン画像プレビュー処理
+    // 画像が選択される度に、この中の処理が走る
+    $('#image').on('change', function (ev) {
+        // このFileReaderが画像を読み込む上で大切
+        const reader = new FileReader();
+        // ファイル名を取得
+        const fileName = ev.target.files[0].name;
+        // 画像が読み込まれた時の動作を記述
+        reader.onload = function (ev) {
+            $('#preview').attr('src', ev.target.result);
+        }
+        reader.readAsDataURL(this.files[0]);
+    })
+
+    $(function () {
+        $('select').multipleSelect({
+            width: 200,
+            selectAll: false, // 「すべて」を非表示にする
+            // formatSelectAll: function() {
+            //     return 'すべて';
+            // },
+            // formatAllSelected: function() {
+            //     return '全て選択されています';
+            // }
+        });
+    });
+
+    // 価格入力フォームの自動フォーマット
+    $('#price').on('input', function () {
+        let value = $(this).val().replace(/[^\d]/g, ''); // 数字以外を削除
+        if (value.length > 0) {
+            $(this).val(`¥${Number(value).toLocaleString()}`);
+        } else {
+            $(this).val('¥'); // 入力が空の場合は¥のみ表示
+        }
+    });
+
+    // ページ読み込み時に¥を表示
+    $(document).ready(function() {
+        let initialValue = $('#price').val();
+        if (!initialValue) {
+            $('#price').val('¥');
+        }
+    });
+
+    // フォーム送信時に「¥」を除去
+    $('form').on('submit', function() {
+        let priceInput = $('#price');
+        let rawValue = priceInput.val().replace(/[^0-9]/g, ''); // 数字のみ取得
+        priceInput.val(rawValue); // 「¥」を取り除いた値をセット
+    });
+</script>
 @endsection
