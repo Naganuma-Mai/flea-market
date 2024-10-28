@@ -70,6 +70,6 @@ class ItemController extends Controller
         // 中間テーブルへの登録
         $item->categories()->attach($request->categories);
 
-        return view('my_page');
+        return redirect('/mypage');
     }
 }
