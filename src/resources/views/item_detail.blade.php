@@ -17,9 +17,7 @@
                     <h1 class="item__ttl">
                         {{ $item->name }}
                     </h1>
-                    <p>
-                        ブランド名？？
-                    </p>
+                    <p>coachtech</p>
                 </div>
                 <div class="item__price">
                     <p class="item__price--content">
@@ -38,9 +36,7 @@
                     <h2 class="item__explanation--header">
                         商品説明
                     </h2>
-                    <p class="item__explanation--content">
-                        {{ $item->explanation }}
-                    </p>
+                    <p class="item__explanation--content">{{ $item->explanation }}</p>
                 </div>
                 <div class="item__information">
                     <h2 class="item__information--header">
@@ -50,7 +46,7 @@
                         <h3 class="item__category--header">
                             カテゴリー
                         </h3>
-                        @foreach ($item_categories as $category)
+                        @foreach ($item->categories as $category)
                         <p class="item__category--content">
                             {{ $category->name }}
                         </p>

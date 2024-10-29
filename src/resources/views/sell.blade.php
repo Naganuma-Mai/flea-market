@@ -104,9 +104,7 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__textarea">
-                        <textarea name="explanation">
-                            {{ old('explanation') }}
-                        </textarea>
+                        <textarea name="explanation">{{ old('explanation') }}</textarea>
                     </div>
                     <!-- <div class="form__error">
                         @error('email')

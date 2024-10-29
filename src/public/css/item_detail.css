@@ -1,0 +1,4 @@
+.item__explanation--content {
+    /* 改行して表示 */
+    white-space: pre-wrap;
+}

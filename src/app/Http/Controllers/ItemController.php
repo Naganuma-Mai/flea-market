@@ -39,7 +39,7 @@ class ItemController extends Controller
     {
         $item = Item::find($item_id);
 
-        return view('item_detail', compact('item', 'item_categories'));
+        return view('item_detail', compact('item'));
     }
 
     public function add()
