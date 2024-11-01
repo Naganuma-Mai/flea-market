@@ -45,6 +45,7 @@
             <div class="purchase__form">
                 <form class="form" action="/purchase/{{ $item->id }}" method="post">
                     @csrf
+                    <input type="hidden" name="item_id" value="{{ $item->id }}">
                     <div class="purchase-table">
                         <table class="purchase-table__inner">
                             <tr class="purchase-table__row">
@@ -62,7 +63,7 @@
                             <tr class="purchase-table__row">
                                 <th class="purchase-table__header">支払い方法</th>
                                 <td class="purchase-table__text">
-                                    <input class="form__item--input" type="hidden" name="payment_id" value="1">
+                                    <input type="hidden" name="payment_id" value="2">
                                     コンビニ払い
                                 </td>
                             </tr>
