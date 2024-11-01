@@ -11,13 +11,14 @@
     </h1>
     <form class="form" action="/purchase/address/{{ $item->id }}" method="post">
         @csrf
+        <input type="hidden" name="profile_id" value="{{ $profile->id ?? '' }}">
         <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">郵便番号</span>
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="postal_code" value="{{ old('postal_code') }}">
+                    <input type="text" name="postal_code" value="{{ old('postal_code', $profile->postal_code ?? '') }}">
                 </div>
                 <!-- <div class="form__error">
                     @error('email')
@@ -32,7 +33,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address" value="{{ old('address') }}">
+                    <input type="text" name="address" value="{{ old('address', $profile->address ?? '') }}">
                 </div>
                 <!-- <div class="form__error">
                     @error('address')
@@ -47,7 +48,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="building" value="{{ old('building') }}">
+                    <input type="text" name="building" value="{{ old('building', $profile->building ?? '') }}">
                 </div>
                 <!-- <div class="form__error">
                     @error('building')
