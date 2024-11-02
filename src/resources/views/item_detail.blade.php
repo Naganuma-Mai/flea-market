@@ -2,6 +2,8 @@
 
 @section('head')
 <link rel="stylesheet" href="{{ asset('css/item_detail.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 @endsection
 
 @section('content')
@@ -25,13 +27,33 @@
                     </p>
                 </div>
                 <div class="item__icon">
-                    <img src="{{ asset('images/star.png') }}" class="item__icon--img" alt="">
+                    <!-- ログイン後 -->
+                    @if (Auth::check())
+                        <!-- お気に入りにしていない商品 -->
+                        @if (!Auth::user()->isLike($item->id))
+                            <a class="toggle_like" item_id="{{ $item->id }}" like_val="0">
+                                <img src="{{ asset('images/star_gray.png') }}" class="item__icon--img" alt="">
+                            </a>
+                        <!-- 既にお気に入りにしている商品 -->
+                        @else
+                            <a class="toggle_like" item_id="{{ $item->id }}" like_val="1">
+                                <img src="{{ asset('images/star_red.png') }}" class="item__icon--img" alt="">
+                            </a>
+                        @endif
+                    <!-- ログイン前 -->
+                    @else
+                        <a class="likes">
+                            <img src="{{ asset('images/star_gray.png') }}" class="item__icon--img" alt="">
+                        </a>
+                    @endif
+                    <p class="item__likes--count">{{ $item->likes->count() }}</p>
                     <form class="item-comment__form" action="/comment/{{ $item->id }}" method="get">
                         @csrf
                         <button class="item-comment__button">
                             <img src="{{ asset('images/comment.png') }}" class="item__icon--img" alt="">
                         </button>
                     </form>
+                    <p class="item__comments--count">{{ $item->comments->count() }}</p>
                 </div>
                 <form class="item-purchase__form" action="/purchase/{{ $item->id }}" method="get">
                     @csrf
@@ -70,4 +92,6 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('js/like.js') }}"></script>
 @endsection
