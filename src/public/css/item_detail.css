@@ -2,3 +2,12 @@
     /* 改行して表示 */
     white-space: pre-wrap;
 }
+
+.item-comment__button {
+    background: none;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

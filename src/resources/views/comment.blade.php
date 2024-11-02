@@ -17,9 +17,7 @@
                     <h1 class="item__ttl">
                         {{ $item->name }}
                     </h1>
-                    <p>
-                        ブランド名？？
-                    </p>
+                    <p>coachtech</p>
                 </div>
                 <div class="item__price">
                     <p class="item__price--content">
@@ -29,6 +27,7 @@
                 <div class="item__icon">
                     <img src="{{ asset('images/star.png') }}" class="item__icon--img" alt="">
                     <img src="{{ asset('images/comment.png') }}" class="item__icon--img" alt="">
+                    <p class="item__comment--count">{{ count($comments) }}</p>
                 </div>
 
                 <div class="comment__group">
@@ -50,16 +49,14 @@
                 </div>
 
                 <div class="comment__form">
-                    <form class="form" action="/comment" method="post">
+                    <form class="form" action="/comment/{{ $item->id }}" method="post">
                         @csrf
                         <div class="form__title">
                             <span class="form__label">商品へのコメント</span>
                         </div>
                         <div class="form__content">
                             <div class="form__textarea">
-                                <textarea name="content">
-                                    {{ old('content') }}
-                                </textarea>
+                                <textarea name="content">{{ old('content') }}</textarea>
                             </div>
                             <!-- <div class="form__error">
                                 @error('email')

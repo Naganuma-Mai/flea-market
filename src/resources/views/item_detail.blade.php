@@ -26,7 +26,12 @@
                 </div>
                 <div class="item__icon">
                     <img src="{{ asset('images/star.png') }}" class="item__icon--img" alt="">
-                    <img src="{{ asset('images/comment.png') }}" class="item__icon--img" alt="">
+                    <form class="item-comment__form" action="/comment/{{ $item->id }}" method="get">
+                        @csrf
+                        <button class="item-comment__button">
+                            <img src="{{ asset('images/comment.png') }}" class="item__icon--img" alt="">
+                        </button>
+                    </form>
                 </div>
                 <form class="item-purchase__form" action="/purchase/{{ $item->id }}" method="get">
                     @csrf

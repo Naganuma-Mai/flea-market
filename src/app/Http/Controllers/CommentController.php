@@ -9,25 +9,23 @@ use Auth;
 
 class CommentController extends Controller
 {
-    public function index(Request $request)
+    public function index($item_id)
     {
-        $comments = Comment::with(['user'])->ItemSearch($request->item_id)->get();
-        $item = Item::find($request->item_id);
+        $comments = Comment::with(['user'])->ItemSearch($item_id)->get();
+        $item = Item::find($item_id);
 
         return view('comment', compact('comments', 'item'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $item_id)
     {
-        $request['user_id'] = Auth::id();
-        Comment::create(
-            $request->only([
-                'user_id',
-                'item_id',
-                'content'
-            ])
-        );
+        $comment = [
+            'user_id' => Auth::id(),
+            'item_id' => $item_id,
+            'content' => $request->content,
+        ];
+        Comment::create($comment);
 
-        return redirect('/comment');
+        return redirect("/comment/$item_id");
     }
 }

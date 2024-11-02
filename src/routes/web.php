@@ -36,6 +36,6 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/mypage', [UserController::class, 'index']);
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
     Route::post('/mypage/profile', [ProfileController::class, 'store']);
-    Route::get('/comment', [CommentController::class, 'index']);
-    Route::post('/comment', [CommentController::class, 'store']);
+    Route::get('/comment/{item_id}', [CommentController::class, 'index']);
+    Route::post('/comment/{item_id}', [CommentController::class, 'store']);
 });
