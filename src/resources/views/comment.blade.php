@@ -52,14 +52,18 @@
                 </div>
 
                 <div class="comment__group">
-                    @foreach ($comments as $comment)
+                    @foreach ($item->comments as $comment)
                     <div class="comment__group-item">
                         <div class="comment__user">
                             <div class="comment__user-image">
-                                <img src="{{ asset( $comment->user->profile->image ) }}">
+                                @if(!empty($comment->user->profile->image))
+                                    <img src="{{ asset( $comment->user->profile->image ) }}">
+                                @else
+                                    <div class="comment__no-image"></div>
+                                @endif
                             </div>
                             <span class="comment__user-name">
-                                {{ $comment->user->profile->name }}
+                                {{ !empty($comment->user->profile->name) ? $comment->user->profile->name : '名前' }}
                             </span>
                         </div>
                         <div class="comment__content">
