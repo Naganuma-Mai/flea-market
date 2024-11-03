@@ -28,11 +28,9 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
-        $items = Item::with(['area', 'genre'])->KeywordSearch($request->keyword)->get();
-        $areas = Area::all();
-        $genres = Genre::all();
+        $items = Item::KeywordSearch($request->keyword)->get();
 
-        return view('item_all', compact('items', 'areas', 'genres'));
+        return view('item_search', compact('items'));
     }
 
     public function detail($item_id)
