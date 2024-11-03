@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Payment;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Auth;
@@ -13,7 +14,10 @@ class PurchaseController extends Controller
     {
         $item = Item::find($item_id);
 
-        return view('purchase', compact('item'));
+        // デフォルトはコンビニ払い
+        $payment = Payment::find(2);
+
+        return view('purchase', compact('item', 'payment'));
     }
 
     public function store(Request $request)

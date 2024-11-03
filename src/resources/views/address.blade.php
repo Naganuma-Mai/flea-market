@@ -11,6 +11,7 @@
     </h1>
     <form class="form" action="/purchase/address/{{ $item->id }}" method="post">
         @csrf
+        <input type="hidden" name="payment_id" value="{{ $payment->id }}">
         <input type="hidden" name="profile_id" value="{{ $profile->id ?? '' }}">
         <div class="form__group">
             <div class="form__group-title">

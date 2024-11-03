@@ -8,6 +8,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/unlike', [LikeController::class, 'destroy']);
     Route::get('/purchase/address/{item_id}', [ProfileController::class, 'editAddress']);
     Route::post('/purchase/address/{item_id}', [ProfileController::class, 'storeAddress']);
+    Route::get('/purchase/payment/{item_id}', [PaymentController::class, 'edit']);
+    Route::post('/purchase/payment/{item_id}', [PaymentController::class, 'update']);
     Route::get('/mypage', [UserController::class, 'index']);
     Route::get('/mypage/profile', [ProfileController::class, 'index']);
     Route::post('/mypage/profile', [ProfileController::class, 'store']);

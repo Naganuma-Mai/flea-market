@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use App\Models\Item;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -47,7 +48,7 @@ class ProfileController extends Controller
         return redirect('/mypage');
     }
 
-    public function editAddress($item_id)
+    public function editAddress(Request $request, $item_id)
     {
         $user = Auth::user();
 
@@ -56,7 +57,9 @@ class ProfileController extends Controller
 
         $item = Item::find($item_id);
 
-        return view('address', compact('profile', 'item'));
+        $payment = Payment::find($request->payment_id);
+
+        return view('address', compact('profile', 'item', 'payment'));
     }
 
     public function storeAddress(Request $request, $item_id)
@@ -74,7 +77,9 @@ class ProfileController extends Controller
 
         $item = Item::find($item_id);
 
-        return view('purchase', compact('item'));
+        $payment = Payment::find($request->payment_id);
+
+        return view('purchase', compact('item', 'payment'));
         // return redirect('/purchase/$item_id')->with('item', $item);
     }
 }

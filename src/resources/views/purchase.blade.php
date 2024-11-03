@@ -27,6 +27,7 @@
                     <form class="form" action="/purchase/payment/{{ $item->id }}" method="get">
                         @csrf
                         <div class="form__item">
+                            <input type="hidden" name="payment_id" value="{{ $payment->id }}">
                             <button class="form__item-button" type="submit">変更する</button>
                         </div>
                     </form>
@@ -36,6 +37,7 @@
                     <form class="form" action="/purchase/address/{{ $item->id }}" method="get">
                         @csrf
                         <div class="form__item">
+                            <input type="hidden" name="payment_id" value="{{ $payment->id }}">
                             <button class="form__item-button" type="submit">変更する</button>
                         </div>
                     </form>
@@ -63,8 +65,8 @@
                             <tr class="purchase-table__row">
                                 <th class="purchase-table__header">支払い方法</th>
                                 <td class="purchase-table__text">
-                                    <input type="hidden" name="payment_id" value="2">
-                                    コンビニ払い
+                                    <input type="hidden" name="payment_id" value="{{ $payment->id }}">
+                                    {{ $payment->name }}払い
                                 </td>
                             </tr>
                         </table>
