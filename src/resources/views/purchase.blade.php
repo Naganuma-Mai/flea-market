@@ -47,7 +47,6 @@
             <div class="purchase__form">
                 <form class="form" action="/purchase/{{ $item->id }}" method="post">
                     @csrf
-                    <input type="hidden" name="item_id" value="{{ $item->id }}">
                     <div class="purchase-table">
                         <table class="purchase-table__inner">
                             <tr class="purchase-table__row">

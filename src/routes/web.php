@@ -30,6 +30,8 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/sell', [ItemController::class, 'store']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'index']);
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
+    Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success']);
+    Route::get('/purchase/cancel/{item_id}', [PurchaseController::class, 'cancel']);
     Route::post('/like', [LikeController::class, 'store']);
     Route::post('/unlike', [LikeController::class, 'destroy']);
     Route::get('/purchase/address/{item_id}', [ProfileController::class, 'editAddress']);
