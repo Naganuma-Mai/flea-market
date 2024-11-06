@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\CreateNewAdmin;
+use App\Contracts\CreatesNewAdmins;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
@@ -20,7 +22,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(CreatesNewAdmins::class, CreateNewAdmin::class);
     }
 
     /**

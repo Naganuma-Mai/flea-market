@@ -9,6 +9,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\Auth\AdminRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +46,19 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/mypage/profile', [ProfileController::class, 'store']);
     Route::get('/comment/{item_id}', [CommentController::class, 'index']);
     Route::post('/comment/{item_id}', [CommentController::class, 'store']);
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/register', [AdminRegisterController::class, 'create'])->name('admin.register');
+    Route::post('/register', [AdminRegisterController::class, 'store']);
+
+    Route::get('/login', [AdminLoginController::class, 'create'])->name('admin.login');
+    Route::post('/login', [AdminLoginController::class, 'store']);
+
+    Route::post('/logout', [AdminLoginController::class, 'destroy']);
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/admin', [AdminController::class, 'index']);
+        Route::post('/user/delete', [UserController::class, 'destroy']);
+    });
 });
