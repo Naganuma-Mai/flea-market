@@ -28,4 +28,11 @@ class CommentController extends Controller
 
         return redirect("/comment/$item_id");
     }
+
+    public function destroy($comment_id)
+    {
+        Comment::find($comment_id)->delete();
+
+        return redirect()->back();
+    }
 }

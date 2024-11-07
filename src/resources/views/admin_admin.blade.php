@@ -22,6 +22,7 @@
                 <th class="user-table__header">名前</th>
                 <th class="user-table__header">メールアドレス</th>
                 <th class="user-table__header"></th>
+                <th class="user-table__header"></th>
             </tr>
             @foreach ($users as $user)
             <tr class="user-table__row">
@@ -38,6 +39,14 @@
                         <div class="delete-form__item">
                             <input type="hidden" name="user_id" value="{{ $user->id }}">
                             <button class="delete-form__button-submit" type="submit">削除</button>
+                        </div>
+                    </form>
+                </td>
+                <td class="user-table__text">
+                    <form class="comment-form" action="/admin/comment/{{ $user->id }}" method="get">
+                        @csrf
+                        <div class="comment-form__button">
+                            <button class="comment-form__button-submit" type="submit">コメント</button>
                         </div>
                     </form>
                 </td>

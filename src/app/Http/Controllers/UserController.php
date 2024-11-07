@@ -12,6 +12,13 @@ class UserController extends Controller
         return view('my_page');
     }
 
+    public function showComments($user_id)
+    {
+        $user = User::find($user_id);
+
+        return view('user_comment', compact('user'));
+    }
+
     public function destroy(Request $request)
     {
         User::find($request->user_id)->delete();

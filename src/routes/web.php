@@ -60,5 +60,7 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/admin', [AdminController::class, 'index']);
         Route::post('/user/delete', [UserController::class, 'destroy']);
+        Route::get('/comment/{user_id}', [UserController::class, 'showComments']);
+        Route::post('/comments/delete/{comment_id}', [CommentController::class, 'destroy']);
     });
 });
