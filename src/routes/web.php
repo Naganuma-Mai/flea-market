@@ -62,5 +62,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/user/delete', [UserController::class, 'destroy']);
         Route::get('/comment/{user_id}', [UserController::class, 'showComments']);
         Route::post('/comments/delete/{comment_id}', [CommentController::class, 'destroy']);
+        Route::get('/mail', [AdminController::class, 'writeMail']);
+        Route::post('/mail', [AdminController::class, 'sendMail']);
     });
 });

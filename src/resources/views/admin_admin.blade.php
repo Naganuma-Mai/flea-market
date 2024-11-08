@@ -10,6 +10,10 @@
         <h1 class="admin-heading">
             ユーザー一覧
         </h1>
+        <form action="/admin/mail" method="get">
+            @csrf
+            <button class="mail__form--button" type="submit">メール送信</button>
+        </form>
         <form class="logout__form" action="/admin/logout" method="post">
             @csrf
             <button class="logout__button">管理者ログアウト</button>
