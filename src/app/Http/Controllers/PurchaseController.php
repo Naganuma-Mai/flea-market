@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
+use Stripe\Customer;
 
 class PurchaseController extends Controller
 {
@@ -72,6 +73,44 @@ class PurchaseController extends Controller
                     'konbini' => [
                         'expires_after_days' => 3, // 支払い有効期限（3日間など）
                     ]
+                ],
+                'success_url' => url('/purchase/success/' . $item_id), // 成功URL
+                'cancel_url' => url('/purchase/cancel/' . $item_id),   // キャンセルURL
+            ]);
+
+            // Stripe決済ページへリダイレクト
+            return redirect($session->url);
+
+        // 銀行振込の処理
+        } elseif ($request->payment_id == 3) {
+            // Stripeの顧客を作成または取得
+            $customer = Customer::create([
+                'email' => Auth::user()->email,
+                'name' => Auth::user()->profile->name,
+            ]);
+
+            // 銀行振込用のStripeセッションを作成
+            $session = Session::create([
+                'payment_method_types' => ['customer_balance'],
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'jpy',
+                        'product_data' => [
+                            'name' => $item->name,
+                        ],
+                        'unit_amount' => $item->price,
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'customer' => $customer->id, // 顧客IDを追加
+                'payment_method_options' => [
+                    'customer_balance' => [
+                        'funding_type' => 'bank_transfer',
+                        'bank_transfer' => [
+                            'type' => 'jp_bank_transfer',
+                        ],
+                    ],
                 ],
                 'success_url' => url('/purchase/success/' . $item_id), // 成功URL
                 'cancel_url' => url('/purchase/cancel/' . $item_id),   // キャンセルURL
