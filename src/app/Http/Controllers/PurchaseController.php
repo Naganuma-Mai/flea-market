@@ -26,11 +26,11 @@ class PurchaseController extends Controller
     {
         $item = Item::find($item_id);
 
-        // クレジットカード払いの場合、Stripe決済に進む
-        if ($request->payment_id == 1) {
-            // StripeのAPIキーを設定
-            Stripe::setApiKey(env('STRIPE_SECRET'));
+        // StripeのAPIキーを設定
+        Stripe::setApiKey(env('STRIPE_SECRET'));
 
+        // クレジットカード払いの場合
+        if ($request->payment_id == 1) {
             // Stripeの決済セッションを作成
             $session = Session::create([
                 'payment_method_types' => ['card'],
@@ -45,6 +45,34 @@ class PurchaseController extends Controller
                     'quantity' => 1,
                 ]],
                 'mode' => 'payment',
+                'success_url' => url('/purchase/success/' . $item_id), // 成功URL
+                'cancel_url' => url('/purchase/cancel/' . $item_id),   // キャンセルURL
+            ]);
+
+            // Stripe決済ページへリダイレクト
+            return redirect($session->url);
+
+        // コンビニ払いの処理
+        } elseif ($request->payment_id == 2) {
+            // コンビニ決済用のStripeセッションを作成
+            $session = Session::create([
+                'payment_method_types' => ['konbini'],
+                'line_items' => [[
+                    'price_data' => [
+                        'currency' => 'jpy',
+                        'product_data' => [
+                            'name' => $item->name,
+                        ],
+                        'unit_amount' => $item->price,
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'payment_method_options' => [
+                    'konbini' => [
+                        'expires_after_days' => 3, // 支払い有効期限（3日間など）
+                    ]
+                ],
                 'success_url' => url('/purchase/success/' . $item_id), // 成功URL
                 'cancel_url' => url('/purchase/cancel/' . $item_id),   // キャンセルURL
             ]);
