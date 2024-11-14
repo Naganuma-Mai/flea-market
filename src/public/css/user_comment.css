@@ -1,0 +1,63 @@
+.search-form {
+    display: none;
+}
+
+.user-comment__content {
+    margin: 0 auto;
+    padding: 50px 100px;
+    min-height: 90vh;
+}
+
+.user-comment__header {
+    margin: 0 auto 40px;
+}
+
+.user-comment__heading {
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+}
+
+.comment-content__row {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #5F5F5F;
+}
+
+.comment-content__header,
+.comment-content__text {
+    width: 25%;
+    font-size: 24px;
+    margin: 0;
+}
+
+.comment-content__header--comment {
+    width: 75%;
+    font-size: 24px;
+    margin: 0;
+}
+
+.comment-content__text--comment {
+    width: 55%;
+    font-size: 24px;
+    margin: 0;
+    /* 改行して表示 */
+    white-space: pre-wrap;
+}
+
+.comment-content__form {
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-form__button-submit {
+    padding: 5px 20px;
+    border: 2px solid #FF5555;
+    background: transparent;
+    color: #FF5555;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 10px;
+}

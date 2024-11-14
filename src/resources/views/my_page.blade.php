@@ -9,9 +9,9 @@
     <div class="my-page__inner">
         <div class="my-page__header">
             <div class="my-page__user">
-                <div class="my-page__user-image">
+                <div class="my-page__user-image--section">
                     <!-- プロフィールの画像が設定されている場合のみ画像を表示 -->
-                    <img src="{{ isset(Auth::user()->profile->image) ? asset(Auth::user()->profile->image) : '' }}">
+                    <img class="my-page__user-image" src="{{ isset(Auth::user()->profile->image) ? asset(Auth::user()->profile->image) : '' }}">
                 </div>
                 <span class="my-page__user-name">
                     <!-- プロフィールの名前が設定されている場合のみ名前を表示 -->
@@ -27,25 +27,25 @@
         </div>
 
         <div class="my-page__main">
-            <input type="radio" name="tab_name" id="tab1" checked>
-            <label class="tab_class" for="tab1">出品した商品</label>
-            <div class="content_class">
+            <input class="my-page__tab--input" type="radio" name="tab_name" id="tab_sell" checked>
+            <label class="my-page__tab--label" for="tab_sell">出品した商品</label>
+            <div class="my-page__tab--content">
                 @foreach (Auth::user()->items as $sell_item)
-                <div class="item__img">
+                <div class="my-page__item">
                     <a href="/item/{{ $sell_item->id }}">
-                        <img src="{{ asset( $sell_item->image ) }}">
+                        <img class="my-page__img" src="{{ asset( $sell_item->image ) }}">
                     </a>
                 </div>
                 @endforeach
             </div>
 
-            <input type="radio" name="tab_name" id="tab2">
-            <label class="tab_class" for="tab2">購入した商品</label>
-            <div class="content_class">
+            <input class="my-page__tab--input" type="radio" name="tab_name" id="tab_purchase">
+            <label class="my-page__tab--label" for="tab_purchase">購入した商品</label>
+            <div class="my-page__tab--content">
                 @foreach (Auth::user()->purchases as $purchase)
-                <div class="item__img">
+                <div class="my-page__item">
                     <a href="/item/{{ $purchase->item->id }}">
-                        <img src="{{ asset( $purchase->item->image ) }}">
+                        <img class="my-page__img" src="{{ asset( $purchase->item->image ) }}">
                     </a>
                 </div>
                 @endforeach

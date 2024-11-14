@@ -1,0 +1,50 @@
+.header-utilities {
+    display: none;
+}
+
+.payment__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    height: 90vh;
+}
+
+.payment-form__heading {
+    text-align: center;
+    font-size: 36px;
+    margin: 0 0 30px;
+}
+
+.form {
+    margin: 0 auto;
+    padding: 30px 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.form__item--select {
+    padding: 5px;
+    width: 680px;
+    height: 45px;
+    border: 1px solid #5F5F5F;
+    font-size: 24px;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.form__button {
+    margin: 0 auto;
+    width: 680px;
+}
+
+.form__button-submit {
+    padding: 10px 40px;
+    width: 100%;
+    height: 60px;
+    border: none;
+    background: #FF5555;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 26px;
+    border-radius: 5px;
+    margin-top: 60px;
+}

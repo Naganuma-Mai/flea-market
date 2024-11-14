@@ -1,0 +1,66 @@
+.search-form {
+    display: none;
+}
+
+.admin__content {
+    margin: 0 auto;
+    padding: 50px 100px;
+    min-height: 90vh;
+}
+
+.admin-header {
+    width: 90%;
+    margin: 0 auto 40px;
+}
+
+.admin-heading {
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+}
+
+.user-content__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.user-content__header,
+.user-content__text {
+    width: 25%;
+    font-size: 24px;
+    margin: 0;
+}
+
+.user-content__header--mail {
+    width: 75%;
+    font-size: 24px;
+    margin: 0;
+}
+
+.user-content__text--mail {
+    width: 40%;
+    font-size: 24px;
+    margin: 0;
+}
+
+.user-content__form {
+    width: 35%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-form {
+    margin-right: 50px;
+}
+
+.delete-form__button-submit,
+.comment-form__button-submit {
+    padding: 5px 20px;
+    border: 2px solid #FF5555;
+    background: transparent;
+    color: #FF5555;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 10px;
+}

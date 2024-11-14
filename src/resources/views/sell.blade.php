@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('head')
-<link rel="stylesheet" href="{{ asset('css/sell.css') }}">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
+<link rel="stylesheet" href="{{ asset('css/sell.css') }}">
 @endsection
 
 @section('content')
@@ -15,12 +15,12 @@
     </h1>
     <form class="form" action="/sell" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="form__group">
+        <div class="form__group--img">
             <div class="form__group-item">
                 <div class="form__group-title">
                     <span class="form__label--item">商品画像</span>
                 </div>
-                <div class="form__group-content">
+                <div class="form__group-content--img">
                     <!-- 商品画像プレビュー表示 -->
                     <div class="form__img">
                         <img id="preview" class="form__img--prv">
@@ -43,12 +43,12 @@
 
         <div class="form__group">
             <h2 class="form__group-heading">商品の詳細</h2>
-            <div class="form__group-item">
+            <div class="form__group-item--category">
                 <div class="form__group-title">
                     <span class="form__label--item">カテゴリー</span>
                 </div>
-                <div class="form__group-content">
-                    <div class="form__select">
+                <div class="form__group-content--category">
+                    <!-- <div class="form__select"> -->
                         <select name="categories[]" multiple="multiple">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">
@@ -56,7 +56,7 @@
                                 </option>
                             @endforeach
                         </select>
-                    </div>
+                    <!-- </div> -->
                     <!-- <div class="form__error">
                         @error('email')
                         {{ $message }}
@@ -141,19 +141,38 @@
 </div>
 
 <script>
+    $('#image').on('change', function (ev) {
+        const reader = new FileReader();
+        const preview = $('#preview');
+        const imageContainer = $('.form__img');
+
+        // 画像が読み込まれた時の処理
+        reader.onload = function (ev) {
+            preview.attr('src', ev.target.result);
+            imageContainer.show(); // 画像が選択されたら表示
+        };
+
+        // ファイルが選択されている場合のみ読み込み
+        if (this.files && this.files[0]) {
+            reader.readAsDataURL(this.files[0]);
+        } else {
+            preview.attr('src', ''); // 画像がリセットされた場合は非表示
+            imageContainer.hide();  // プレビュー部分を非表示
+        }
+    });
     // アイコン画像プレビュー処理
     // 画像が選択される度に、この中の処理が走る
-    $('#image').on('change', function (ev) {
+    // $('#image').on('change', function (ev) {
         // このFileReaderが画像を読み込む上で大切
-        const reader = new FileReader();
+        // const reader = new FileReader();
         // ファイル名を取得
-        const fileName = ev.target.files[0].name;
+        // const fileName = ev.target.files[0].name;
         // 画像が読み込まれた時の動作を記述
-        reader.onload = function (ev) {
-            $('#preview').attr('src', ev.target.result);
-        }
-        reader.readAsDataURL(this.files[0]);
-    })
+    //     reader.onload = function (ev) {
+    //         $('#preview').attr('src', ev.target.result);
+    //     }
+    //     reader.readAsDataURL(this.files[0]);
+    // })
 
     $(function () {
         $('select').multipleSelect({

@@ -1,0 +1,21 @@
+.item-search__content {
+    margin: 0 auto;
+    padding: 50px 0;
+    min-height: 90vh;
+}
+
+.item-search__inner {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.item-search__item {
+    width: 200px;
+    height: 200px;
+    margin: 0 30px 50px;
+}
+
+.item__img {
+    width: 100%;
+}

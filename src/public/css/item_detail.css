@@ -1,6 +1,66 @@
-.item__explanation--content {
-    /* 改行して表示 */
-    white-space: pre-wrap;
+.item-detail__content {
+    margin: 0 auto;
+    padding: 100px 15px;
+    min-height: 90vh;
+}
+
+.item-detail__section {
+    display: flex;
+    justify-content: center;
+}
+
+.item__img--section {
+    width: 451px;
+    height: 548px;
+}
+
+.item__img {
+    width: 100%;
+}
+
+.item__content {
+    margin-left: 100px;
+}
+
+.item__ttl {
+    font-size: 48px;
+    margin: 0;
+}
+
+.item__brand {
+    font-size: 24px;
+    margin: 0;
+}
+
+.item__price--content {
+    font-size: 36px;
+    margin: 30px 0;
+}
+
+.item__icon {
+    display: flex;
+}
+
+.item__icon--like,
+.item__icon--comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item__icon--img {
+    width: 40px;
+    height: 40px;
+}
+
+.item__likes--count,
+.item__comments--count {
+    font-size: 18px;
+    margin: 0;
+}
+
+.item__icon--comment {
+    margin-left: 60px;
 }
 
 .item-comment__button {
@@ -10,4 +70,65 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+.item-purchase__button {
+    padding: 5px 40px;
+    width: 452px;
+    height: 57px;
+    border: none;
+    background: #FF5555;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+.item__explanation,
+.item__information {
+    margin: 30px 0 70px;
+}
+
+.item__explanation--header,
+.item__information--header {
+    font-size: 36px;
+    margin: 0;
+}
+
+.item__explanation--content {
+    /* 改行して表示 */
+    white-space: pre-wrap;
+    font-size: 24px;
+}
+
+.item__category,
+.item__condition {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.item__category--header,
+.item__condition--header {
+    font-size: 24px;
+    margin: 0;
+}
+
+.item__category--content {
+    width: 150px;
+    height: 35px;
+    background: #D9D9D9;
+    border-radius: 15px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+    margin: 0 0 0 30px;
+}
+
+.item__condition--content {
+    font-size: 20px;
+    margin: 0 50px;
 }

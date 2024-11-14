@@ -6,14 +6,14 @@
 
 @section('content')
 <div class="item-all__content">
-    <div class="item-all_inner">
-        <input type="radio" name="tab_name" id="tab1" checked>
-        <label class="tab_class" for="tab1">おすすめ</label>
-        <div class="content_class">
+    <div class="item-all__inner">
+        <input class="item-all__tab--input" type="radio" name="tab_name" id="tab_recommend" checked>
+        <label class="item-all__tab--label" for="tab_recommend">おすすめ</label>
+        <div class="item-all__tab--content">
             @foreach ($recommend_items as $recommend_item)
-            <div class="item__img">
+            <div class="item-all__item">
                 <a href="/item/{{ $recommend_item->id }}">
-                    <img src="{{ asset( $recommend_item->image ) }}">
+                    <img class="item-all__img" src="{{ asset( $recommend_item->image ) }}">
                 </a>
             </div>
             @endforeach
@@ -21,13 +21,13 @@
 
         <!-- ログイン後 -->
         @if (Auth::check())
-        <input type="radio" name="tab_name" id="tab2">
-        <label class="tab_class" for="tab2">マイリスト</label>
-        <div class="content_class">
+        <input class="item-all__tab--input" type="radio" name="tab_name" id="tab_like">
+        <label class="item-all__tab--label" for="tab_like">マイリスト</label>
+        <div class="item-all__tab--content">
             @foreach ($like_items as $like_item)
-            <div class="item__img">
+            <div class="item-all__item">
                 <a href="/item/{{ $like_item->id }}">
-                    <img src="{{ asset( $like_item->image ) }}">
+                    <img class="item-all__img" src="{{ asset( $like_item->image ) }}">
                 </a>
             </div>
             @endforeach

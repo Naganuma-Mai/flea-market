@@ -1,0 +1,94 @@
+.my-page__content {
+    margin: 0 auto;
+    padding: 50px 0;
+    min-height: 90vh;
+}
+
+.my-page__header {
+    display: flex;
+    align-items: center;
+}
+
+.my-page__user {
+    display: flex;
+    align-items: center;
+    margin-left: 300px;
+}
+
+.my-page__user-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.my-page__user-name {
+    font-size: 36px;
+    margin-left: 10px;
+}
+
+.my-page__form {
+    margin-left: 300px;
+}
+
+.my-page__form__button {
+    padding: 5px;
+    width: 310px;
+    height: 59px;
+    border: 2px solid #FF5555;
+    background: transparent;
+    color: #FF5555;
+    cursor: pointer;
+    font-size: 26px;
+    border-radius: 10px;
+}
+
+.my-page__main {
+    flex-wrap: wrap;
+    display: flex;
+    margin-top: 50px;
+}
+
+.my-page__tab--label {
+    width: 155px;
+    height: 40px;
+    margin-left: 150px;
+    text-align: center;
+    display: block;
+    float: left;
+    order: -1;
+    color: #5F5F5F;
+    font-size: 24px;
+}
+
+.my-page__tab--input {
+    display: none;
+}
+
+.my-page__tab--input:checked+.my-page__tab--label {
+    color: #FF0000;
+    font-size: 24px;
+}
+
+.my-page__tab--content {
+    display: none;
+    width: 100%;
+    border-top: 2px solid #5F5F5F;
+}
+
+.my-page__tab--input:checked+.my-page__tab--label+.my-page__tab--content {
+    display: block;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.my-page__item {
+    width: 200px;
+    height: 200px;
+    margin: 0 30px 30px;
+}
+
+.my-page__img {
+    width: 100%;
+}

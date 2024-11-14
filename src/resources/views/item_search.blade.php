@@ -8,9 +8,9 @@
 <div class="item-search__content">
     <div class="item-search__inner">
         @foreach ($items as $item)
-        <div class="item__img">
+        <div class="item-search__item">
             <a href="/item/{{ $item->id }}">
-                <img src="{{ asset( $item->image ) }}">
+                <img class="item__img" src="{{ asset( $item->image ) }}">
             </a>
         </div>
         @endforeach

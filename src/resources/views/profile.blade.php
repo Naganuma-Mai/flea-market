@@ -14,7 +14,7 @@
         @csrf
         <input type="hidden" name="profile_id" value="{{ $profile->id ?? '' }}">
         <div class="form__group">
-            <div class="form__group-content">
+            <div class="form__group-content--img">
                 <!-- アイコン画像プレビュー表示 -->
                 <div class="form__img">
                     <img id="preview" class="form__img--prv" src="{{ isset($profile) && $profile->image ? asset($profile->image) : '' }}">

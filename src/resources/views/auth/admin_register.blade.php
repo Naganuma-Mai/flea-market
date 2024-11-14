@@ -46,7 +46,7 @@
         </div>
     </form>
     <div class="login__button">
-        <a class="login__button-link" href="/admin/login">ログインはこちら</a>
+        <a class="login__button-link" href="/admin/login">管理者ログインはこちら</a>
     </div>
 </div>
 @endsection
