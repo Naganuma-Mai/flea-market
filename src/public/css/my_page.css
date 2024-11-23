@@ -7,12 +7,17 @@
 .my-page__header {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .my-page__user {
     display: flex;
     align-items: center;
-    margin-left: 300px;
+    justify-content: space-between;
+    margin: 0 150px 20px;
+    /* width: 310px; */
 }
 
 .my-page__user-image {
@@ -24,11 +29,11 @@
 
 .my-page__user-name {
     font-size: 36px;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 .my-page__form {
-    margin-left: 300px;
+    margin: 0 150px;
 }
 
 .my-page__form__button {
@@ -86,9 +91,76 @@
 .my-page__item {
     width: 200px;
     height: 200px;
-    margin: 0 30px 30px;
+    margin: 30px 30px 0;
 }
 
 .my-page__img {
     width: 100%;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .my-page__content {
+        padding: 30px 0;
+    }
+
+    .my-page__header {
+        display: block;
+    }
+
+    .my-page__user {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 auto 20px;
+        min-width: 250px;
+        width: auto;
+    }
+
+    .my-page__user-image {
+        /* max-width: 150px;
+        min-width: 100px;
+        width: auto;
+        max-height: 150px;
+        height: auto;
+        flex-grow: 1;
+        flex-shrink: 0; */
+        margin: 0 10px 0;
+    }
+
+    .my-page__user-name {
+        font-size: 30px;
+        margin: 0 10px 0;
+    }
+
+    .my-page__form {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+    }
+
+    .my-page__form__button {
+        width: 250px;
+        height: 45px;
+        font-size: 20px;
+        /* display: flex;
+        justify-content: center; */
+    }
+
+    .my-page__tab--label {
+        width: auto;
+        margin-left: 22px;
+        font-size: 20px;
+    }
+
+    .my-page__tab--input:checked+.my-page__tab--label {
+        font-size: 20px;
+    }
+
+    .my-page__tab--content {
+        padding: 20px 0;
+    }
 }

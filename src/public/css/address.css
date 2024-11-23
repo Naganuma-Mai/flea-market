@@ -16,7 +16,7 @@
 
 .form {
     margin: 0 auto;
-    padding: 30px 100px;
+    padding: 30px 0;
     width: 100%;
     text-align: center;
 }
@@ -54,7 +54,7 @@
 }
 
 .form__button {
-    margin: 60px auto 0;
+    margin: 90px auto 0;
     width: 680px;
 }
 
@@ -68,5 +68,49 @@
     cursor: pointer;
     font-size: 26px;
     border-radius: 5px;
-    margin-top: 30px;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .address-form__heading {
+        font-size: 30px;
+    }
+
+    .form {
+        width: 400px;
+        max-width: 100%;
+    }
+
+    .form__group {
+        margin: 30px auto;
+        width: 100%;
+    }
+
+    .form__label--item {
+        font-size: 20px;
+    }
+
+    /* .form__error {
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+    margin: 0 auto;
+} */
+
+    .form__input--text input {
+        padding: 15px 10px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .form__button {
+        margin: 60px auto 0;
+        width: 100%;
+    }
+
+    .form__button-submit {
+        padding: 5px 40px;
+        height: 45px;
+        font-size: 22px;
+    }
 }

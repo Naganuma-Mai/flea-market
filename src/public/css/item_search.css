@@ -13,7 +13,7 @@
 .item-search__item {
     width: 200px;
     height: 200px;
-    margin: 0 30px 50px;
+    margin: 50px 30px 0;
 }
 
 .item__img {

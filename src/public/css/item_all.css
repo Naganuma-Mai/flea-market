@@ -46,9 +46,21 @@
 .item-all__item {
     width: 200px;
     height: 200px;
-    margin: 0 30px 50px;
+    margin: 50px 30px 0;
 }
 
 .item-all__img {
     width: 100%;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .item-all__tab--label {
+        width: auto;
+        font-size: 20px;
+    }
+
+    .item-all__tab--input:checked+.item-all__tab--label {
+        font-size: 20px;
+    }
 }

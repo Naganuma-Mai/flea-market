@@ -13,7 +13,7 @@
     <div class="user-content">
         <div class="user-content__row">
             <p class="user-content__header">名前</p>
-            <p class="user-content__header--mail">メールアドレス</p>
+            <!-- <p class="user-content__header--mail">メールアドレス</p> -->
         </div>
         @foreach ($users as $user)
         <div class="user-content__row">
@@ -21,9 +21,9 @@
                 <!-- プロフィールの名前が設定されている場合のみ名前を表示 -->
                 {{ isset($user->profile->name) ? $user->profile->name : 'ユーザー名' }}
             </p>
-            <p class="user-content__text--mail">
+            <!-- <p class="user-content__text--mail">
                 {{ $user->email }}
-            </p>
+            </p> -->
             <div class="user-content__form">
                 <form class="delete-form" action="/admin/user/delete" method="post">
                     @csrf

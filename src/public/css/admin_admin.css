@@ -4,12 +4,11 @@
 
 .admin__content {
     margin: 0 auto;
-    padding: 50px 100px;
+    padding: 50px 0;
     min-height: 90vh;
 }
 
 .admin-header {
-    width: 90%;
     margin: 0 auto 40px;
 }
 
@@ -19,20 +18,27 @@
     text-align: center;
 }
 
+.user-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .user-content__row {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 25px;
 }
 
 .user-content__header,
 .user-content__text {
-    width: 25%;
+    width: 50%;
     font-size: 24px;
     margin: 0;
+    flex-shrink: 0;
 }
 
-.user-content__header--mail {
+/* .user-content__header--mail {
     width: 75%;
     font-size: 24px;
     margin: 0;
@@ -42,10 +48,10 @@
     width: 40%;
     font-size: 24px;
     margin: 0;
-}
+} */
 
 .user-content__form {
-    width: 35%;
+    /* width: 35%; */
     display: flex;
     justify-content: flex-end;
 }
@@ -63,4 +69,38 @@
     cursor: pointer;
     font-size: 24px;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .admin__content {
+        padding: 50px 15px;
+    }
+
+    .admin-heading {
+        font-size: 30px;
+    }
+
+    .user-content {
+        max-width: 400px;
+    }
+
+    .user-content__row {
+        margin-bottom: 20px;
+    }
+
+    .user-content__header,
+    .user-content__text {
+        width: 45%;
+        font-size: 18px;
+    }
+
+    .delete-form {
+        margin-right: 10px;
+    }
+
+    .delete-form__button-submit,
+    .comment-form__button-submit {
+        padding: 3px 6px;
+        font-size: 18px;
+    }
 }

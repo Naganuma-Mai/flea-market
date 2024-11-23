@@ -15,8 +15,15 @@
     <header class="header">
         <div class="header__inner">
             <div class="header-utilities">
-                <div class="header__logo">
-                    <img src="{{ asset('images/logo.svg') }}" class="header__logo--img" alt="">
+                <div class="header__top">
+                    <div class="header__logo">
+                        <img src="{{ asset('images/logo.svg') }}" class="header__logo--img" alt="">
+                    </div>
+                    <div id="btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
                 <div class="search-form">
                     <form class="search-form__inner" action="/items/search" method="get">
@@ -100,6 +107,16 @@
     <main>
         @yield('content')
     </main>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const menu = document.getElementById("menu");
+
+        btn.addEventListener("click", () => {
+            btn.classList.toggle("on");
+            menu.classList.toggle("on");
+        });
+    </script>
 </body>
 
 </html>

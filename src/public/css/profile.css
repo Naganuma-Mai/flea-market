@@ -1,6 +1,6 @@
 .profile__content {
     margin: 0 auto;
-    padding: 40px 15px;
+    padding: 40px 30px;
     min-height: 90vh;
 }
 
@@ -12,14 +12,14 @@
 
 .form {
     margin: 0 auto;
-    padding: 20px 100px;
-    width: 100%;
+    padding: 20px 0;
+    width: 680px;
     text-align: center;
 }
 
 .form__group {
     margin: 40px auto;
-    width: 680px;
+    width: 100%;
 }
 
 .form__group-content--img {
@@ -82,8 +82,8 @@
 }
 
 .form__button {
-    margin: 60px auto 0;
-    width: 680px;
+    margin: 90px auto 0;
+    width: 100%;
 }
 
 .form__button-submit {
@@ -96,5 +96,62 @@
     cursor: pointer;
     font-size: 26px;
     border-radius: 5px;
-    margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-form__heading {
+        font-size: 30px;
+    }
+
+    .form__group-content--img {
+        display: block;
+    }
+
+    .form {
+        padding: 0;
+        width: 400px;
+        max-width: 100%;
+    }
+
+    .form__group {
+        margin: 30px auto;
+    }
+
+    .form__img {
+        margin-bottom: 20px;
+    }
+
+    .form__input {
+        margin-left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form__input--label {
+        padding: 5px 20px;
+        width: auto;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .form__label--item {
+        font-size: 18px;
+    }
+
+    .form__input--text input {
+        padding: 5px 10px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .form__button {
+        margin: 50px auto 0;
+    }
+
+    .form__button-submit {
+        padding: 5px 40px;
+        height: 45px;
+        font-size: 20px;
+    }
 }

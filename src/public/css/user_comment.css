@@ -61,3 +61,44 @@
     font-size: 24px;
     border-radius: 10px;
 }
+
+.sp_br {
+    display: none;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .user-comment__content {
+        padding: 50px 20px;
+    }
+
+    .user-comment__heading {
+        font-size: 30px;
+    }
+
+    .comment-content__row {
+        padding: 10px;
+    }
+
+    .comment-content__header,
+    .comment-content__text {
+        font-size: 18px;
+    }
+
+    .comment-content__header--comment {
+        font-size: 18px;
+    }
+
+    .comment-content__text--comment {
+        font-size: 18px;
+    }
+
+    .delete-form__button-submit {
+        padding: 5px;
+        font-size: 17px;
+    }
+
+    .sp_br {
+        display: block;
+    }
+}
