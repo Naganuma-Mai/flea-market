@@ -17,10 +17,7 @@
         </div>
         @foreach ($users as $user)
         <div class="user-content__row">
-            <p class="user-content__text">
-                <!-- プロフィールの名前が設定されている場合のみ名前を表示 -->
-                {{ isset($user->profile->name) ? $user->profile->name : 'ユーザー名' }}
-            </p>
+            <p class="user-content__text">{{ $user->profile->name }}</p>
             <!-- <p class="user-content__text--mail">
                 {{ $user->email }}
             </p> -->

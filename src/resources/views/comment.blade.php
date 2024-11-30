@@ -60,14 +60,10 @@
                     <div class="comment__group-item">
                         <div class="comment__user">
                             <div class="comment__user-image">
-                                @if(!empty($comment->user->profile->image))
-                                    <img class="comment__user-image" src="{{ asset( $comment->user->profile->image ) }}">
-                                @else
-                                    <div class="comment__no-image"></div>
-                                @endif
+                                <img class="comment__user-image" src="{{ asset( $comment->user->profile->image ) }}">
                             </div>
                             <span class="comment__user-name">
-                                {{ !empty($comment->user->profile->name) ? $comment->user->profile->name : '名前' }}
+                                {{ $comment->user->profile->name }}
                             </span>
                         </div>
                         <div class="comment__text">{{ $comment->content }}</div>

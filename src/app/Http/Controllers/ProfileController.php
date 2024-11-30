@@ -22,20 +22,23 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        // アップロードされたファイル名を取得
-        $file_name = $request->file('image')->getClientOriginalName();
-
-        // 取得したファイル名で保存
-        $request->file('image')->storeAs('public/images' , $file_name);
-
         $profile = [
             'user_id' => Auth::id(),
-            'image' => 'storage/images/' . $file_name,
             'name' => $request->name,
             'postal_code' => $request->postal_code,
             'address' => $request->address,
             'building' => $request->building
         ];
+
+        // ファイルがアップロードされている場合
+        if ($request->hasFile('image')) {
+            // アップロードされたファイル名を取得
+            $file_name = $request->file('image')->getClientOriginalName();
+            // 取得したファイル名で保存
+            $request->file('image')->storeAs('public/images' , $file_name);
+
+            $profile['image'] = 'storage/images/' . $file_name;
+        }
 
         // profile_idキーが存在し、かつ値が入力されている場合
         if ($request->filled('profile_id')) {
@@ -62,18 +65,10 @@ class ProfileController extends Controller
         return view('address', compact('profile', 'item', 'payment'));
     }
 
-    public function storeAddress(Request $request, $item_id)
+    public function updateAddress(Request $request, $item_id)
     {
-        // profile_idキーが存在し、かつ値が入力されている場合
-        if ($request->filled('profile_id')) {
-            $address = $request->only(['postal_code', 'address', 'building']);
-            Profile::find($request->profile_id)->update($address);
-        // profile_idキーが存在しない、もしくはNULLの場合
-        } else {
-            $request['user_id'] = Auth::id();
-            $address = $request->only(['user_id', 'postal_code', 'address', 'building']);
-            Profile::create($address);
-        }
+        $address = $request->only(['postal_code', 'address', 'building']);
+        Profile::find($request->profile_id)->update($address);
 
         $item = Item::find($item_id);
 

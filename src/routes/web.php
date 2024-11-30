@@ -38,7 +38,7 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/like', [LikeController::class, 'store']);
     Route::post('/unlike', [LikeController::class, 'destroy']);
     Route::get('/purchase/address/{item_id}', [ProfileController::class, 'editAddress']);
-    Route::post('/purchase/address/{item_id}', [ProfileController::class, 'storeAddress']);
+    Route::post('/purchase/address/{item_id}', [ProfileController::class, 'updateAddress']);
     Route::get('/purchase/payment/{item_id}', [PaymentController::class, 'edit']);
     Route::post('/purchase/payment/{item_id}', [PaymentController::class, 'update']);
     Route::get('/mypage', [UserController::class, 'index']);

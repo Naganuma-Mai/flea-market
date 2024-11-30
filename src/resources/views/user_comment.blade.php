@@ -8,8 +8,7 @@
 <div class="user-comment__content">
     <div class="user-comment__header">
         <h1 class="user-comment__heading">
-            <!-- プロフィールの名前が設定されている場合のみ名前を表示 -->
-            {{ isset($user->profile->name) ? $user->profile->name : 'ユーザー名' }}<br class="sp_br">コメント一覧
+            {{ $user->profile->name }}<br class="sp_br">コメント一覧
         </h1>
     </div>
 
