@@ -55,8 +55,9 @@ coachtechブランドのアイテムを出品する
 
 ## テーブル設計
 
-<img width="491" alt="table1" src="https://github.com/user-attachments/assets/cc1b8171-53b7-4e2f-b182-c5a84faa6132">
-<img width="492" alt="table2" src="https://github.com/user-attachments/assets/1100cb5f-8d8f-430d-a18a-504e059751b1">
+<img width="656" alt="table1" src="https://github.com/user-attachments/assets/3ec90a10-e1f5-4149-8b6b-d69005226a67">
+<img width="658" alt="table2" src="https://github.com/user-attachments/assets/e1483561-f755-4cac-a8cc-5af69e2f7073">
+<img width="658" alt="table3" src="https://github.com/user-attachments/assets/6e5bac07-ffdf-44ce-88a0-9b371898029c">
 
 ## ER図
 
