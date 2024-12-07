@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\AdminRegisterController;
@@ -27,6 +28,8 @@ use App\Http\Controllers\Auth\AdminRegisterController;
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/items/search', [ItemController::class, 'search']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+
+Route::post('/webhook', [WebhookController::class, 'handleWebhook']);
 
 Route::middleware('auth:web')->group(function () {
     Route::get('/sell', [ItemController::class, 'add']);
