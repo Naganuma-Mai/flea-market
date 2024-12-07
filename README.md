@@ -61,7 +61,7 @@ coachtechブランドのアイテムを出品する
 
 ## ER図
 
-<img width="620" alt="er" src="https://github.com/user-attachments/assets/f0e70b62-29d4-474b-916b-6af0c992f893">
+<img width="620" alt="er" src="https://github.com/user-attachments/assets/dc4c22a8-2a1b-4cb6-9d82-efa2d5d2f2ec">
 
 ## 環境構築
 
