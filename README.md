@@ -139,23 +139,35 @@ php artisan storage:link
 **ngrokのセットアップとStripe Webhookの設定**
 
 1. ngrokのインストール
-`brew install ngrok/ngrok/ngrok`
+
+```bash
+brew install ngrok/ngrok/ngrok
+```
 
 > macOSでHomebrewがインストールされている場合、上記コマンドでngrokをインストールできます。<br>他のOSの場合は、ngrok公式サイトからダウンロードしてインストールしてください。
 
 2. ngrokのセットアップ
 - 公式サイトから無料アカウントを作成し、ログインします。
 - ダッシュボードから「Authtoken」をコピーします。
-- 次に、ターミナルを開いて以下のコマンドでngrokにAuthtokenを設定します。（「YOUR_AUTH_TOKEN」はコピーしたAuthtokenに置き換えてください。）
-`ngrok config add-authtoken YOUR_AUTH_TOKEN`
+- 次に、ターミナルを開いて以下のコマンドでngrokにAuthtokenを設定します。<br>（「YOUR_AUTH_TOKEN」はコピーしたAuthtokenに置き換えてください。）
+
+```bash
+ngrok config add-authtoken YOUR_AUTH_TOKEN
+```
 
 3. ローカルサーバーの起動
-`docker-compose up -d --build`
+
+```bash
+docker-compose up -d --build
+```
 
 4. ngrokの起動
-`ngrok http 80`
 
-> これにより、ngrokがhttp://localhost:80に対して一時的な公開URLを作成します。<br>出力されたForwardingの→の左側部分が、外部からアクセス可能なURLです。<br>例：https://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app
+```bash
+ngrok http 80
+```
+
+> これにより、ngrokがhttp\://localhost:80に対して一時的な公開URLを作成します。<br>出力されたForwardingの→の左側部分が、外部からアクセス可能なURLです。<br>例：https\://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app
 
 5. StripeダッシュボードでWebhookエンドポイントを設定
 - Stripeダッシュボードにログインします。
@@ -163,7 +175,7 @@ php artisan storage:link
 - 「イベントの送信先」の「送信先を追加する」をクリックします。
 - イベントとして、「payment_intent.succeeded」・「payment_intent.payment_failed」を選択し、「続行」をクリックします。
 - 送信先のタイプとして、「Webhookエンドポイント」を選択し、「続行」をクリックします。
-- エンドポイントURLとして、ngrokで生成されたURLに「/webhook」を追加したものを入力し、「送信先を作成する」をクリックします。<br>例: https://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app/webhook
+- エンドポイントURLとして、ngrokで生成されたURLに「/webhook」を追加したものを入力し、「送信先を作成する」をクリックします。<br>例: https\://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app/webhook
 
 6. StripeのWebhookシークレットキーの設定
 > .envファイルに以下のように追加してください。
