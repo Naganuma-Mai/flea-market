@@ -37,6 +37,7 @@ coachtechブランドのアイテムを出品する
 - 出品機能
 - 配送先変更機能
 - 商品購入機能
+> Stripe決済が完了した際にWebhookで通知され、購入データがデータベースに保存されます。<br>Stripeでの決済完了の仕方は以下になります。<br>コンビニ払い：3分経過すると決済完了となります。<br>銀行振込：Stripeのダッシュボードで購入する顧客のページに行き、「支払い方法>JPYの現金残高」から資金を追加することで決済完了となります。
 - 支払い方法変更機能
 - 管理者登録機能
 - 管理者ログイン機能
@@ -133,4 +134,39 @@ php artisan db:seed
 
 ```bash
 php artisan storage:link
+```
+
+**ngrokのセットアップとStripe Webhookの設定**
+
+1. ngrokのインストール
+`brew install ngrok/ngrok/ngrok`
+
+> macOSでHomebrewがインストールされている場合、上記コマンドでngrokをインストールできます。<br>他のOSの場合は、ngrok公式サイトからダウンロードしてインストールしてください。
+
+2. ngrokのセットアップ
+- 公式サイトから無料アカウントを作成し、ログインします。
+- ダッシュボードから「Authtoken」をコピーします。
+- 次に、ターミナルを開いて以下のコマンドでngrokにAuthtokenを設定します。（「YOUR_AUTH_TOKEN」はコピーしたAuthtokenに置き換えてください。）
+`ngrok config add-authtoken YOUR_AUTH_TOKEN`
+
+3. ローカルサーバーの起動
+`docker-compose up -d --build`
+
+4. ngrokの起動
+`ngrok http 80`
+
+> これにより、ngrokがhttp://localhost:80に対して一時的な公開URLを作成します。<br>出力されたForwardingの→の左側部分が、外部からアクセス可能なURLです。<br>例：https://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app
+
+5. StripeダッシュボードでWebhookエンドポイントを設定
+- Stripeダッシュボードにログインします。
+- 左側のメニューから「開発者」→「Webhooks」を選択します。
+- 「イベントの送信先」の「送信先を追加する」をクリックします。
+- イベントとして、「payment_intent.succeeded」・「payment_intent.payment_failed」を選択し、「続行」をクリックします。
+- 送信先のタイプとして、「Webhookエンドポイント」を選択し、「続行」をクリックします。
+- エンドポイントURLとして、ngrokで生成されたURLに「/webhook」を追加したものを入力し、「送信先を作成する」をクリックします。<br>例: https://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app/webhook
+
+6. StripeのWebhookシークレットキーの設定
+> .envファイルに以下のように追加してください。
+```text
+STRIPE_WEBHOOK_SECRET=****
 ```
