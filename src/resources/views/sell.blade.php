@@ -10,9 +10,7 @@
 
 @section('content')
 <div class="sell__content">
-    <h1 class="sell-form__heading">
-        商品の出品
-    </h1>
+    <h1 class="sell-form__heading">商品の出品</h1>
     <form class="form" action="/sell" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form__group--img">
@@ -32,11 +30,6 @@
                             <input id="image" class="form__input--file" type="file" name="image" accept="image/*">
                         </label>
                     </div>
-                    <!-- <div class="form__error">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -48,20 +41,13 @@
                     <span class="form__label--item">カテゴリー</span>
                 </div>
                 <div class="form__group-content--category">
-                    <!-- <div class="form__select"> -->
-                        <select name="categories[]" multiple="multiple">
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">
-                                    {{ $category->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    <!-- </div> -->
-                    <!-- <div class="form__error">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div> -->
+                    <select name="categories[]" multiple="multiple">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="form__group-item">
@@ -72,11 +58,6 @@
                     <div class="form__input--text">
                         <input type="text" name="condition" value="{{ old('condition') }}">
                     </div>
-                    <!-- <div class="form__error">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -91,11 +72,6 @@
                     <div class="form__input--text">
                         <input type="text" name="name" value="{{ old('name') }}">
                     </div>
-                    <!-- <div class="form__error">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div> -->
                 </div>
             </div>
             <div class="form__group-item">
@@ -106,11 +82,6 @@
                     <div class="form__textarea">
                         <textarea name="explanation">{{ old('explanation') }}</textarea>
                     </div>
-                    <!-- <div class="form__error">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -125,11 +96,6 @@
                     <div class="form__input--text">
                         <input id="price" type="text" name="price" value="{{ old('price') }}">
                     </div>
-                    <!-- <div class="form__error">
-                        @error('email')
-                        {{ $message }}
-                        @enderror
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -160,30 +126,11 @@
             imageContainer.hide();  // プレビュー部分を非表示
         }
     });
-    // アイコン画像プレビュー処理
-    // 画像が選択される度に、この中の処理が走る
-    // $('#image').on('change', function (ev) {
-        // このFileReaderが画像を読み込む上で大切
-        // const reader = new FileReader();
-        // ファイル名を取得
-        // const fileName = ev.target.files[0].name;
-        // 画像が読み込まれた時の動作を記述
-    //     reader.onload = function (ev) {
-    //         $('#preview').attr('src', ev.target.result);
-    //     }
-    //     reader.readAsDataURL(this.files[0]);
-    // })
 
     $(function () {
         $('select').multipleSelect({
             width: 200,
             selectAll: false, // 「すべて」を非表示にする
-            // formatSelectAll: function() {
-            //     return 'すべて';
-            // },
-            // formatAllSelected: function() {
-            //     return '全て選択されています';
-            // }
         });
     });
 

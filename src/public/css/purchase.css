@@ -13,7 +13,6 @@
     max-width: 650px;
     flex-shrink: 0;
     flex-grow: 1;
-    /* width: 55%; */
 }
 
 .item__information {

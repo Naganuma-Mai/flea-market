@@ -1,6 +1,5 @@
 .header__inner {
     margin: 0 auto;
-    /* height: 10vh; */
     min-height: 9vh;
     background: #000000;
     display: flex;
@@ -104,9 +103,6 @@
     }
 
     #btn {
-        /* position: fixed; */
-        /* top: 10px;
-        right: 25px; */
         width: 44px;
         height: 44px;
         z-index: 10;

@@ -13,14 +13,10 @@
     <div class="user-content">
         <div class="user-content__row">
             <p class="user-content__header">名前</p>
-            <!-- <p class="user-content__header--mail">メールアドレス</p> -->
         </div>
         @foreach ($users as $user)
         <div class="user-content__row">
             <p class="user-content__text">{{ $user->profile->name }}</p>
-            <!-- <p class="user-content__text--mail">
-                {{ $user->email }}
-            </p> -->
             <div class="user-content__form">
                 <form class="delete-form" action="/admin/user/delete" method="post">
                     @csrf

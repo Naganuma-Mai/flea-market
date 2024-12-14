@@ -81,11 +81,6 @@
                             <div class="form__textarea">
                                 <textarea name="content">{{ old('content') }}</textarea>
                             </div>
-                            <!-- <div class="form__error">
-                                @error('email')
-                                {{ $message }}
-                                @enderror
-                            </div> -->
                         </div>
                         <button class="form__button-submit" type="submit">コメントを送信する</button>
                     </form>

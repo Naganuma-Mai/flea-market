@@ -11,7 +11,6 @@ class CommentController extends Controller
 {
     public function index($item_id)
     {
-        // $comments = Comment::with(['user'])->ItemSearch($item_id)->get();
         $item = Item::find($item_id);
 
         return view('comment', compact('item'));

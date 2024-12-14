@@ -6,9 +6,7 @@
 
 @section('content')
 <div class="payment__content">
-    <h1 class="payment-form__heading">
-        支払い方法の変更
-    </h1>
+    <h1 class="payment-form__heading">支払い方法の変更</h1>
     <form class="form" action="/purchase/payment/{{ $item->id }}" method="post">
         @csrf
         <select class="form__item--select" name="payment_id">

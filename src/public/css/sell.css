@@ -148,13 +148,6 @@
     margin-top: 5px;
 }
 
-/* .form__error {
-    height: 20px;
-    color: #ff0000;
-    text-align: left;
-    margin: 0 auto;
-} */
-
 .form__input--text input {
     padding: 15px;
     width: 100%;
@@ -230,19 +223,9 @@
     .form__input {
         width: auto;
         min-width: 145px;
-        /* flex-grow: 1; */
         flex-shrink: 0;
     }
 
-        /* .item__img--section {
-            max-width: 451px;
-            width: 42%;
-            max-height: 451px;
-            height: 42%;
-            flex-grow: 1;
-            flex-shrink: 0;
-            margin-right: 50px;
-        } */
     .form__input--label {
         padding: 8px 18px;
         font-size: 14px;

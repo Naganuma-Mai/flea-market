@@ -77,21 +77,5 @@ class WebhookController extends Controller
     private function handlePaymentIntentFailed($payment_intent)
     {
         Log::info('PaymentIntent failed: ', ['id' => $payment_intent->id]);
-
-        // 銀行振込の失敗に関する処理
-        // 必要に応じて注文のステータスを更新
     }
-
-    // private function savePurchase($user_id, $item_id, $payment_id)
-    // {
-    //     $purchase = [
-    //         'user_id' => $user_id,
-    //         'item_id' => $item_id,
-    //         'payment_id' => $payment_id,
-    //     ];
-
-    //     Purchase::create($purchase);
-
-    //     Log::info('Purchase saved successfully', $purchase);
-    // }
 }

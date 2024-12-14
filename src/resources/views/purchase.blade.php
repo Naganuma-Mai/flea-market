@@ -14,12 +14,8 @@
                         <img class="item__img" src="{{ asset( $item->image ) }}">
                     </div>
                     <div class="item__content">
-                        <h1 class="item__ttl">
-                            {{ $item->name }}
-                        </h1>
-                        <p class="item__price--content">
-                            ¥{{ number_format( $item->price ) }}
-                        </p>
+                        <h1 class="item__ttl">{{ $item->name }}</h1>
+                        <p class="item__price--content">¥{{ number_format( $item->price ) }}</p>
                     </div>
                 </div>
                 <div class="payment-form">
@@ -50,15 +46,11 @@
                     <div class="purchase-box">
                         <div class="purchase-box__row">
                             <p class="purchase-box__header">商品代金</p>
-                            <p class="purchase-box__text">
-                                ¥{{ number_format( $item->price ) }}
-                            </p>
+                            <p class="purchase-box__text">¥{{ number_format( $item->price ) }}</p>
                         </div>
                         <div class="purchase-box__row--price">
                             <p class="purchase-box__header">支払い金額</p>
-                            <p class="purchase-box__text">
-                                ¥{{ number_format( $item->price ) }}
-                            </p>
+                            <p class="purchase-box__text">¥{{ number_format( $item->price ) }}</p>
                         </div>
                         <div class="purchase-box__row">
                             <p class="purchase-box__header">支払い方法</p>

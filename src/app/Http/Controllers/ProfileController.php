@@ -75,6 +75,5 @@ class ProfileController extends Controller
         $payment = Payment::find($request->payment_id);
 
         return view('purchase', compact('item', 'payment'));
-        // return redirect('/purchase/$item_id')->with('item', $item);
     }
 }

@@ -17,11 +17,6 @@
                 <div class="form__input--text">
                     <input type="text" name="subject">
                 </div>
-                <!-- <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__group">
@@ -32,11 +27,6 @@
                 <div class="form__textarea">
                     <textarea name="content"></textarea>
                 </div>
-                <!-- <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__button">

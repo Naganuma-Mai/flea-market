@@ -20,7 +20,6 @@ class CreateNewAdmin implements CreatesNewAdmins
     public function create(array $input): Admin
     {
         Validator::make($input, [
-            // 'name' => ['required', 'string', 'max:255'],
             'email' => [
                 'required',
                 'string',
@@ -32,7 +31,6 @@ class CreateNewAdmin implements CreatesNewAdmins
         ])->validate();
 
         return Admin::create([
-            // 'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);

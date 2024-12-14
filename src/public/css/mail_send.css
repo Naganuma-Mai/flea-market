@@ -35,14 +35,6 @@
     font-size: 24px;
 }
 
-/* .form__error {
-    height: 20px;
-    width: 350px;
-    color: #ff0000;
-    text-align: left;
-    margin: 0 auto;
-} */
-
 .form__input--text input {
     padding: 15px;
     width: 100%;

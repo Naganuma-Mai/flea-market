@@ -7,9 +7,7 @@
 
 @section('content')
 <div class="profile__content">
-    <h1 class="profile-form__heading">
-        プロフィール設定
-    </h1>
+    <h1 class="profile-form__heading">プロフィール設定</h1>
     <form class="form" action="/mypage/profile" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="profile_id" value="{{ $profile->id ?? '' }}">
@@ -26,11 +24,6 @@
                         <input id="icon" class="form__input--file" type="file" name="image" accept="image/*">
                     </label>
                 </div>
-                <!-- <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__group">
@@ -41,11 +34,6 @@
                 <div class="form__input--text">
                     <input type="text" name="name" value="{{ old('name', $profile->name ?? '') }}">
                 </div>
-                <!-- <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__group">
@@ -56,11 +44,6 @@
                 <div class="form__input--text">
                     <input type="text" name="postal_code" value="{{ old('postal_code', $profile->postal_code ?? '') }}">
                 </div>
-                <!-- <div class="form__error">
-                    @error('email')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__group">
@@ -71,11 +54,6 @@
                 <div class="form__input--text">
                     <input type="text" name="address" value="{{ old('address', $profile->address ?? '') }}">
                 </div>
-                <!-- <div class="form__error">
-                    @error('address')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__group">
@@ -86,11 +64,6 @@
                 <div class="form__input--text">
                     <input type="text" name="building" value="{{ old('building', $profile->building ?? '') }}">
                 </div>
-                <!-- <div class="form__error">
-                    @error('building')
-                    {{ $message }}
-                    @enderror
-                </div> -->
             </div>
         </div>
         <div class="form__button">

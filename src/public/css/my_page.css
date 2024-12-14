@@ -17,7 +17,6 @@
     align-items: center;
     justify-content: space-between;
     margin: 0 150px 20px;
-    /* width: 310px; */
 }
 
 .my-page__user-image {
@@ -117,13 +116,6 @@
     }
 
     .my-page__user-image {
-        /* max-width: 150px;
-        min-width: 100px;
-        width: auto;
-        max-height: 150px;
-        height: auto;
-        flex-grow: 1;
-        flex-shrink: 0; */
         margin: 0 10px 0;
     }
 
@@ -146,8 +138,6 @@
         width: 250px;
         height: 45px;
         font-size: 20px;
-        /* display: flex;
-        justify-content: center; */
     }
 
     .my-page__tab--label {
