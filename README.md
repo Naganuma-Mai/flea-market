@@ -147,36 +147,12 @@ php artisan storage:link
 - `SHOW DATABASES;`
 > SHOW DATABASES;入力後、demo_testが作成されていれば成功です。
 
-2. configディレクトリの中のdatabase.phpに以下を追加
-
-```text
-'mysql_test' => [
-            'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => 'demo_test',
-            'username' => 'root',
-            'password' => 'root',
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-],
-```
-
-3. 「.env」ファイルをコピーして 「.env.testing」ファイルを作成
+2. 「.env」ファイルをコピーして 「.env.testing」ファイルを作成
 
 - `docker-compose exec php bash`
 - `cp .env .env.testing`
 
-4. .env.testingの編集
+3. .env.testingの編集
 
 ```text
 APP_ENV=test
@@ -189,23 +165,16 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-5. APP_KEYに新たなテスト用のアプリケーションキーを追加
+4. APP_KEYに新たなテスト用のアプリケーションキーを追加
 
 - `php artisan key:generate --env=testing`
 - `php artisan config:clear`
 
-6. テスト用のテーブルを作成
+5. テスト用のテーブルを作成
 
 `php artisan migrate --env=testing`
 
-7. phpunit.xmlの編集
-
-```text
-<server name="DB_CONNECTION" value="mysql_test"/>
-<server name="DB_DATABASE" value="demo_test"/>
-```
-
-8. テストの実行
+6. テストの実行
 
 - `php artisan config:clear`
 - `vendor/bin/phpunit tests/Feature/CommentTest.php`
@@ -229,13 +198,7 @@ brew install ngrok/ngrok/ngrok
 ngrok config add-authtoken YOUR_AUTH_TOKEN
 ```
 
-3. ローカルサーバーの起動
-
-```bash
-docker-compose up -d --build
-```
-
-4. ngrokの起動
+3. ngrokの起動
 
 ```bash
 ngrok http 80
@@ -243,7 +206,7 @@ ngrok http 80
 
 > これにより、ngrokがhttp\://localhost:80に対して一時的な公開URLを作成します。<br>出力されたForwardingの→の左側部分が、外部からアクセス可能なURLです。<br>例：`https://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app`
 
-5. StripeダッシュボードでWebhookエンドポイントを設定
+4. StripeダッシュボードでWebhookエンドポイントを設定
 - Stripeダッシュボードにログインします。
 - 左側のメニューから「開発者」→「Webhooks」を選択します。
 - 「イベントの送信先」の「送信先を追加する」をクリックします。
@@ -251,7 +214,7 @@ ngrok http 80
 - 送信先のタイプとして、「Webhookエンドポイント」を選択し、「続行」をクリックします。
 - エンドポイントURLとして、ngrokで生成されたURLに「/webhook」を追加したものを入力し、「送信先を作成する」をクリックします。<br>例: `https://1a44-240b-13-2140-a200-cdb5-5969-eee3-cd99.ngrok-free.app/webhook`
 
-6. StripeのWebhookシークレットキーの設定
+5. StripeのWebhookシークレットキーの設定
 > .envファイルに以下のように追加してください。
 ```text
 STRIPE_WEBHOOK_SECRET=****
