@@ -15,7 +15,7 @@
             <div class="form__group-content--img">
                 <!-- アイコン画像プレビュー表示 -->
                 <div class="form__img">
-                    <img id="preview" class="form__img--prv" src="{{ isset($profile) && $profile->image ? asset($profile->image) : '' }}">
+                    <img id="preview" class="form__img--prv" src="{{ isset($profile) && $profile->image ? asset($profile->image) : asset('images/no_image.jpg') }}">
                 </div>
                 <!-- アイコン画像 -->
                 <div class="form__input">
