@@ -178,6 +178,7 @@ DB_PASSWORD=root
 
 - `php artisan config:clear`
 - `vendor/bin/phpunit tests/Feature/CommentTest.php`
+- `vendor/bin/phpunit tests/Feature/UserTest.php`
 
 **ngrokのセットアップとStripe Webhookの設定**
 
