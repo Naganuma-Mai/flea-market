@@ -14,20 +14,20 @@ class WebhookController extends Controller
     public function handleWebhook(Request $request)
     {
         // Webhookのシークレットキー
-        $endpointSecret = env('STRIPE_WEBHOOK_SECRET');
+        $endpoint_secret = env('STRIPE_WEBHOOK_SECRET');
 
         // リクエストからペイロードを取得（デコードしない）
         $payload = $request->getContent();
 
         // Stripe-Signature ヘッダーを取得
-        $sigHeader = $request->header('Stripe-Signature');
+        $sig_header = $request->header('Stripe-Signature');
 
         try {
             // Stripe Webhook署名の検証
             $event = Webhook::constructEvent(
                 $payload,
-                $sigHeader,
-                $endpointSecret
+                $sig_header,
+                $endpoint_secret
             );
         } catch (UnexpectedValueException $e) {
             // ペイロードが無効な場合
@@ -35,7 +35,7 @@ class WebhookController extends Controller
             return response('Invalid payload', 400);
         } catch (SignatureVerificationException $e) {
             // 署名の検証に失敗した場合
-            Log::error('Invalid signature', ['error' => $e->getMessage(), 'signature' => $sigHeader, 'payload' => $payload]);
+            Log::error('Invalid signature', ['error' => $e->getMessage(), 'signature' => $sig_header, 'payload' => $payload]);
             return response('Invalid signature', 400);
         }
 
