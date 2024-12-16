@@ -69,7 +69,7 @@
                         <h3 class="item__category--header">カテゴリー</h3>
                         <div class="item__category--content">
                             @foreach ($item->categories as $category)
-                            <p class="item__category--item">{{ $category->name }}</p>
+                                <p class="item__category--item">{{ $category->name }}</p>
                             @endforeach
                         </div>
                     </div>

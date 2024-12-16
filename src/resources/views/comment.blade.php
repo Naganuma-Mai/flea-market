@@ -16,15 +16,11 @@
 
             <div class="item-comment__content">
                 <div class="item__header">
-                    <h1 class="item__ttl">
-                        {{ $item->name }}
-                    </h1>
+                    <h1 class="item__ttl">{{ $item->name }}</h1>
                     <p class="item__brand">coachtech</p>
                 </div>
                 <div class="item__price">
-                    <p class="item__price--content">
-                        ¥{{ number_format( $item->price ) }}(値段)
-                    </p>
+                    <p class="item__price--content">¥{{ number_format( $item->price ) }}(値段)</p>
                 </div>
                 <div class="item__icon">
                     <div class="item__icon--like">
@@ -62,9 +58,7 @@
                             <div class="comment__user-image">
                                 <img class="comment__user-image" src="{{ asset( $comment->user->profile->image ) }}">
                             </div>
-                            <span class="comment__user-name">
-                                {{ $comment->user->profile->name }}
-                            </span>
+                            <span class="comment__user-name">{{ $comment->user->profile->name }}</span>
                         </div>
                         <div class="comment__text">{{ $comment->content }}</div>
                     </div>

@@ -15,7 +15,7 @@ class AdminLoginResponse implements LoginResponseContract
     public function toResponse($request)
     {
         return $request->wantsJson()
-                    ? response()->json(['two_factor' => false])
-                    : redirect()->intended('admin/admin');
+            ? response()->json(['two_factor' => false])
+            : redirect()->intended('admin/admin');
     }
 }

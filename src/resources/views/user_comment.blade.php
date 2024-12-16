@@ -7,9 +7,7 @@
 @section('content')
 <div class="user-comment__content">
     <div class="user-comment__header">
-        <h1 class="user-comment__heading">
-            {{ $user->profile->name }}<br class="sp_br">コメント一覧
-        </h1>
+        <h1 class="user-comment__heading">{{ $user->profile->name }}<br class="sp_br">コメント一覧</h1>
     </div>
 
     <div class="comment-content">

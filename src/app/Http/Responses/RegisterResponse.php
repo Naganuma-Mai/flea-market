@@ -16,7 +16,7 @@ class RegisterResponse implements RegisterResponseContract
     public function toResponse($request)
     {
         return $request->wantsJson()
-                    ? new JsonResponse('', 201)
-                    : redirect('/mypage/profile');
+            ? new JsonResponse('', 201)
+            : redirect('/mypage/profile');
     }
 }
